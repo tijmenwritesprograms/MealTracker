@@ -3,15 +3,18 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:viewmodels="clr-namespace:MealTracker.ViewModels"
              x:Class="MealTracker.Views.MealPage"
-             x:DataType="viewmodels:MealViewModel" >
+             BackgroundColor="White" >
     <ContentPage.BindingContext>
         <viewmodels:MealViewModel />
     </ContentPage.BindingContext>
-    <ContentPage.Content>
-        <StackLayout>
-            <Label Text="Welcome to Xamarin.Forms!"
-                VerticalOptions="CenterAndExpand" 
-                HorizontalOptions="CenterAndExpand" />
-        </StackLayout>
-    </ContentPage.Content>
+    <ListView BackgroundColor="Transparent"
+              ItemsSource="{Binding Meals}" >
+        <ListView.ItemTemplate>
+            <DataTemplate>
+                <TextCell Text="{Binding Name}"
+                          Detail="{Binding LastEaten}" />
+            </DataTemplate>
+        </ListView.ItemTemplate>
+        
+    </ListView>
 </ContentPage>
